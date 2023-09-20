@@ -36,7 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: const Text('Home', style: TextStyle(
+            fontFamily: 'googlefont',
+            fontSize: 30
+          ),),
+          
           centerTitle: true,
           leading: Container(
             child: ElevatedButton(
@@ -84,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             print(prefs.getBool('islogin'));
                             Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(
+                              MaterialPageRoute (
                                   builder: (context) => LoginScreen()),
                                   (Route <dynamic> route) => false,
                             );
@@ -107,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView.separated(
             itemBuilder: (context, index) {
               final isEven = index.isEven;
-              final borderRadious = isEven ? BorderRadius.circular(25) : BorderRadius.zero;
+              final borderRadious = isEven ? BorderRadius.circular(25) : BorderRadius.zero; 
               
               return ListTile(
                 leading: ClipRRect(
@@ -120,12 +124,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                title: Text(arrNames[index]),
+                title: Text(arrNames[index],
+                style: const TextStyle(
+                  fontFamily: 'googlefont2'
+                ),),
               );
             },
             itemCount: arrNames.length,
             separatorBuilder: (context, index) {
-              return Divider(
+              return const Divider(
                 height: 100,
                 thickness: 1,
               );
