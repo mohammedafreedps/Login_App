@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 102, 102, 102),
           title: const Text('Home', style: TextStyle(
             fontFamily: 'googlefont',
             fontSize: 30
@@ -56,21 +57,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text('OK'),
+                          child: const Text('OK'),
                         ),
                       ],
                     );
                   },
                 );
               },
-              style: ElevatedButton.styleFrom(primary: Colors.red),
+              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 228, 135, 128)),
               onLongPress: () async {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Logout?'), 
-                      content: Text(
+                      title: const Text('Logout?'), 
+                      content: const Text(
                           'Do you really want to logout'), 
                       actions: [
                         TextButton(
@@ -78,23 +79,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.of(context)
                                 .pop();
                           },
-                          child: Text('NO'), 
+                          child: const Text('NO'), 
                         ),
                         TextButton(
                           onPressed: () async {
                             final SharedPreferences prefs = await SharedPreferences.getInstance();
                             await prefs.setBool('islogin', false);
-                            print('in homescreen');
-                            print(prefs.getBool('islogin'));
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute (
-                                  builder: (context) => LoginScreen()),
+                            // print('in homescreen');
+                            // print(prefs.getBool('islogin'));
+                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute (
+                                  builder: (context) => const LoginScreen()),
                                   (Route <dynamic> route) => false,
                             );
                             
                           },
-                          child: Text('yes'), 
+                          child: const Text('yes'), 
                         ),
                       
                       ],
@@ -102,12 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 );
               },
-              child: Text('log out'),
+              child: const Text('log out'),
             ),
           ),
         ),
         body: Container(
-          margin: EdgeInsets.only(top: 10),
+          color: const Color.fromARGB(255, 71, 71, 71),
           child: ListView.separated(
             itemBuilder: (context, index) {
               final isEven = index.isEven;
@@ -126,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 title: Text(arrNames[index],
                 style: const TextStyle(
-                  fontFamily: 'googlefont2'
+                  fontFamily: 'googlefont2',
+                  color: Color.fromARGB(255, 226, 226, 226),
+                  fontWeight: FontWeight.bold
                 ),),
               );
             },
